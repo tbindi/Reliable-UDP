@@ -1,0 +1,29 @@
+README
+
+Header design:
+	1. sequence number
+	2. ACK number
+	3. ACK flag, FIN flag
+	4. Advertised window - CLI parameter - No Header
+	5. length - length of the data in the packet
+
+
+Reliable UDP Header Format
+
+
+    0                   1                   2                   3   
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          Source Port          |       Destination Port        |  	-> 	Taken care by the Network Layer
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        Sequence Number                        |	-> 	32 bit sequence number
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                    Acknowledgment Number                      |	-> 	32 bit ACK number
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |	             |  	           |      	                       |	-> 	1 byte ACK
+   |      ACK      |	   FIN       |	       length	               |	-> 	1 byte FIN
+   |        	     |               |     			                     |	-> 	2 byte length
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                             data                              |	->	Data continued
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
